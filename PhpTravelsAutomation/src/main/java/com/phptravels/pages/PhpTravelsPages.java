@@ -2,9 +2,6 @@ package com.phptravels.pages;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
@@ -34,17 +31,17 @@ public class PhpTravelsPages {
 	// public UpdatedExcelFileReader excelReader;
 	LogReport log = new LogReport();
 	public ExcelDataReader excel;
-	CommonUtility common = new CommonUtility();
+	CommonUtility utility = new CommonUtility();
 	PropertyFileLoader properties = new PropertyFileLoader();
 	VerificationManager validate = new VerificationManager();
 	ReadExcelFile excelReader = new ReadExcelFile();
 
 	public void accountPageValidation(WebDriver driver) throws Exception, NullCellValueException {
 
-		String actualDisplayedMessage = common.getText(driver,
+		String actualDisplayedMessage = utility.getText(driver,
 				properties.phpTravellLocator("loc.text.messageDisplayed"));
 
-		String expectedDisplayedMessage = excelReader.getCellData(FilePath.PHP_TESTDATA, "dashBoardData",
+		String expectedDisplayedMessage = excelReader.getCellData(FilePath.PHPTRAVELS_DASHBOARD, "dashBoardData",
 				"DisplayedMessage", "testID1");
 
 		log.info("verifying  the displayedMessage");
@@ -54,7 +51,7 @@ public class PhpTravelsPages {
 		String color = driver.findElement(By.cssSelector(properties.phpTravellLocator("loc.txt.color.bookingTab")))
 				.getAttribute("class");
 
-		String bookingTab = excelReader.getCellData(FilePath.PHP_TESTDATA, "dashBoardData", "BookingTab", "testID1");
+		String bookingTab = excelReader.getCellData(FilePath.PHPTRAVELS_DASHBOARD, "dashBoardData", "BookingTab", "testID1");
 
 		log.info(" verifying booking is tab is selected");
 		validate.verifyContent(color, bookingTab, "booking Tab is not selected");
@@ -72,14 +69,14 @@ public class PhpTravelsPages {
 
 	public void dateTimeValidation(WebDriver driver) {
 
-		String actualTime = common.getText(driver, properties.phpTravellLocator("loc.text.time"));
+		String actualTime = utility.getText(driver, properties.phpTravellLocator("loc.text.time"));
 
-		String actualTimming = actualTime.substring(0, 5);
+		String actualTimming = actualTime.substring(0,5);
 		System.out.println(actualTimming);
 		String time = getDateTimeFormate("HH:mm");
 		String date = getDateTimeFormate("dd-MMMM-YYY");
 
-		String actualDate = common.getText(driver, properties.phpTravellLocator("loc.text.date"));
+		String actualDate = utility.getText(driver, properties.phpTravellLocator("loc.text.date"));
 		validate.verify(actualTimming, time, "time not matched");
 		validate.verify(actualDate, date, "date not matched");
 
@@ -108,16 +105,16 @@ public class PhpTravelsPages {
 
 	{
 
-		WriteExcel write = new WriteExcel(FilePath.PHP_TESTDATA);
+		WriteExcel write = new WriteExcel(FilePath.PHPTRAVELS_DASHBOARD);
 
-		List<WebElement> totalInvoice = common.getElementsList(properties.phpTravellLocator("loc.btn.allInvoice"),
+		List<WebElement> totalInvoice = utility.getElementsList(properties.phpTravellLocator("loc.btn.allInvoice"),
 				driver);
 		System.out.println(totalInvoice.size());
 		for (int index = 1; index <= totalInvoice.size(); index++) {
-			actualBookingDetails = common.getText(driver,
+			actualBookingDetails = utility.getText(driver,
 					properties.phpTravellLocator("loc.txt.bookingdetails").replace("***", index + ""));
 
-			String actualStatus = common.getText(driver,
+			String actualStatus = utility.getText(driver,
 					properties.phpTravellLocator("loc.txt.bookingStatus").replace("***", index + ""));
 			String splitBooking[] = actualBookingDetails.split("\n", 3);
 			bookingId = splitBooking[0].split(" ", 3);
@@ -137,17 +134,17 @@ public class PhpTravelsPages {
 
 		}
 
-		excel = new ExcelDataReader(FilePath.PHP_TESTDATA);
+		excel = new ExcelDataReader(FilePath.PHPTRAVELS_DASHBOARD);
 		Random random = new Random();
 		randomInteger = random.nextInt(totalInvoice.size());
 		log.info("generating the random number for booking random booking detail " + totalInvoice.size());
 		System.out.println(randomInteger + 1);
 		String locator = properties.phpTravellLocator("loc.btn.randomInvoice").replace("***", randomInteger + 1 + "");
-		common.scrollToDown(driver, locator);
-		actualBookingDetails = common.getText(driver,
+		utility.scrollToDown(driver, locator);
+		actualBookingDetails = utility.getText(driver,
 				properties.phpTravellLocator("loc.txt.bookingdetails").replace("***", randomInteger + 1 + ""));
 		log.info("getting  of random booking details");
-		String actualStatus = common.getText(driver,
+		String actualStatus = utility.getText(driver,
 				properties.phpTravellLocator("loc.txt.bookingStatus").replace("***", randomInteger + 1 + ""));
 		log.info("getting the booking status");
 		String bookId = excel.getCellData("bookingDetail", "BookingId", randomInteger + 1);
@@ -168,7 +165,7 @@ public class PhpTravelsPages {
 		validate.verifyContent(actualStatus, status, "status does not match");
 		log.info("validated booking status");
 
-		common.clickElement(driver, locator);
+		utility.clickElement(driver, locator);
 		log.info("click on the random invoice");
 
 	}

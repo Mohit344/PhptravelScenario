@@ -374,5 +374,17 @@ public class CommonUtility {
 
 		@SuppressWarnings("unused")
 		Object texts = execute.executeScript("return document.querySelector('loctor value').innerText;").toString();
+	
 	}
+
+	/**
+	 * Method gets the title of the current page
+	 */
+	public String getTitle(WebDriver driver) {
+		String title = driver.getTitle();
+		return title;
+	}
+
+
+
 }

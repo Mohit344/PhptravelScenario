@@ -29,7 +29,7 @@ public class FilePath {
      
      public static final String PHPTRAVELL_LOCATOR=OBJECT_REPOSITARY+File.separator+"phptravels.properties";
      
-     public static final String PHP_TESTDATA =TEST_DATA+File.separator+"phptravelsdashboard.xlsx";
+     public static final String PHPTRAVELS_DASHBOARD =TEST_DATA+File.separator+"phptravelsdashboard.xlsx";
     // /PhpTravellsAutomation/src/test/resources/testdata/bookingdetails.xlsx
 	public static final String BOOKING_DETAILS=TEST_DATA+File.separator+"bookingdetails.xlsx";
 	

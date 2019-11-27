@@ -6,6 +6,6 @@
 		<suite-file
 			path="./src/test/resources/suitefiles/phptravels.xml" />
 
-		
+
 	</suite-files>
 </suite> <!-- Suite -->

@@ -2,38 +2,38 @@
 <testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="phpTravels" duration-ms="51354" started-at="2019-11-27T14:25:52 IST" finished-at="2019-11-27T14:26:44 IST">
+  <suite name="phpTravels" duration-ms="84659" started-at="2019-11-27T20:31:26 IST" finished-at="2019-11-27T20:32:51 IST">
     <groups>
     </groups>
-    <test name="phpTravelsTest" duration-ms="51354" started-at="2019-11-27T14:25:52 IST" finished-at="2019-11-27T14:26:44 IST">
+    <test name="phpTravelsTest" duration-ms="84659" started-at="2019-11-27T20:31:26 IST" finished-at="2019-11-27T20:32:51 IST">
       <class name="com.phptravels.testscript.PhpTravelsSript">
-        <test-method status="PASS" signature="configSetup(org.testng.ITestContext)[pri:0, instance:com.phptravels.testscript.PhpTravelsSript@50d0686]" name="configSetup" is-config="true" duration-ms="16812" started-at="2019-11-27T14:25:52 IST" finished-at="2019-11-27T14:26:09 IST">
+        <test-method status="PASS" signature="configSetup(org.testng.ITestContext)[pri:0, instance:com.phptravels.testscript.PhpTravelsSript@50d0686]" name="configSetup" is-config="true" duration-ms="7543" started-at="2019-11-27T20:31:26 IST" finished-at="2019-11-27T20:31:34 IST">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@4ce14f05]]>
+                <![CDATA[org.testng.TestRunner@3b95d13c]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- configSetup -->
-        <test-method status="PASS" signature="DashBoard()[pri:1, instance:com.phptravels.testscript.PhpTravelsSript@50d0686]" name="DashBoard" duration-ms="13543" started-at="2019-11-27T14:26:09 IST" finished-at="2019-11-27T14:26:23 IST">
+        <test-method status="PASS" signature="dashBoard()[pri:1, instance:com.phptravels.testscript.PhpTravelsSript@50d0686]" name="dashBoard" duration-ms="19018" started-at="2019-11-27T20:31:34 IST" finished-at="2019-11-27T20:31:53 IST">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- DashBoard -->
-        <test-method status="PASS" signature="clickInvoice()[pri:2, instance:com.phptravels.testscript.PhpTravelsSript@50d0686]" name="clickInvoice" duration-ms="20007" started-at="2019-11-27T14:26:23 IST" finished-at="2019-11-27T14:26:43 IST">
+        </test-method> <!-- dashBoard -->
+        <test-method status="PASS" signature="verifyRandomBooking()[pri:2, instance:com.phptravels.testscript.PhpTravelsSript@50d0686]" name="verifyRandomBooking" duration-ms="57456" started-at="2019-11-27T20:31:53 IST" finished-at="2019-11-27T20:32:50 IST">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- clickInvoice -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.phptravels.testscript.PhpTravelsSript@50d0686]" name="tearDown" is-config="true" duration-ms="937" started-at="2019-11-27T14:26:43 IST" finished-at="2019-11-27T14:26:44 IST">
+        </test-method> <!-- verifyRandomBooking -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.phptravels.testscript.PhpTravelsSript@50d0686]" name="tearDown" is-config="true" duration-ms="585" started-at="2019-11-27T20:32:50 IST" finished-at="2019-11-27T20:32:51 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
       </class> <!-- com.phptravels.testscript.PhpTravelsSript -->
     </test> <!-- phpTravelsTest -->
   </suite> <!-- phpTravels -->
-  <suite name="phptravelsSuits" duration-ms="0" started-at="2019-11-27T14:26:44 IST" finished-at="2019-11-27T14:26:44 IST">
+  <suite name="phptravelsSuits" duration-ms="0" started-at="2019-11-27T20:32:51 IST" finished-at="2019-11-27T20:32:51 IST">
     <groups>
     </groups>
   </suite> <!-- phptravelsSuits -->

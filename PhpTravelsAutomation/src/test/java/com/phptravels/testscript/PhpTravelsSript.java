@@ -1,7 +1,6 @@
 package com.phptravels.testscript;
 
-import org.openqa.selenium.Capabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.JavascriptExecutor;
 import org.testng.annotations.Test;
 
 import com.phptravels.constants.FilePath;
@@ -17,7 +16,7 @@ import com.phptravels.validation.VerificationManager;
 import com.phptravels.waits.Waits;
 
 public class PhpTravelsSript extends TestBase {
-	CommonUtility common = new CommonUtility();
+	CommonUtility utility = new CommonUtility();
 	PropertyFileLoader properties = new PropertyFileLoader();
 	VerificationManager validate = new VerificationManager();
 	ReadExcelFile excelReader = new ReadExcelFile();
@@ -28,17 +27,17 @@ public class PhpTravelsSript extends TestBase {
 	@Test(priority = 1)
 	public void dashBoard() throws Exception, NullCellValueException {
 
-		String userId = excelReader.getCellData(FilePath.PHP_TESTDATA, "dashBoardData", "UserId", "testID1");
+		String userId = excelReader.getCellData(FilePath.PHPTRAVELS_DASHBOARD, "dashBoardData", "UserId", "testID1");
 		log.info("enter the userid");
-		common.clickAndSendText(driver, properties.phpTravellLocator("loc.input.id"), TimeConstant.WAIT, userId);
+		utility.clickAndSendText(driver, properties.phpTravellLocator("loc.input.id"), TimeConstant.WAIT, userId);
 
-		String userPassward = excelReader.getCellData(FilePath.PHP_TESTDATA, "dashBoardData", "UserPassward",
+		String userPassward = excelReader.getCellData(FilePath.PHPTRAVELS_DASHBOARD, "dashBoardData", "UserPassward",
 				"testID1");
 		log.info("enter the userPassward");
-		common.clickAndSendText(driver, properties.phpTravellLocator("loc.input.passward"), TimeConstant.WAIT,
+		utility.clickAndSendText(driver, properties.phpTravellLocator("loc.input.passward"), TimeConstant.WAIT,
 				userPassward);
 		log.info("click on login button");
-		common.clickElement(driver, properties.phpTravellLocator("loc.login.btn"));
+		utility.clickElement(driver, properties.phpTravellLocator("loc.login.btn"));
 		log.info("validation 'hi' message is comming or not");
 		home.accountPageValidation(driver);
 		log.info("validated message is displayed");
@@ -46,12 +45,9 @@ public class PhpTravelsSript extends TestBase {
 		log.info("validated date and time");
 
 		log.info("click on the gotIt! button");
-		common.clickElement(driver, properties.phpTravellLocator("loc.btn.gotIt"));
-		Capabilities cap = ((RemoteWebDriver) driver).getCapabilities();
-		String browserName = cap.getBrowserName().toLowerCase();
-		System.out.println(browserName);
+		
 		log.info("click on the invoice button");
-		common.clickElement(driver, properties.phpTravellLocator("loc.btn.invoice"));
+		utility.clickElement(driver, properties.phpTravellLocator("loc.btn.invoice"));
 
 		String mainWindowHandle = driver.getWindowHandle();
 
@@ -64,9 +60,8 @@ public class PhpTravelsSript extends TestBase {
 				log.info("validate url is matching with the booking number");
 				String invoicePageUrl = driver.getCurrentUrl();
 				log.info("click on the gotIt button");
-				common.clickElement(driver, properties.phpTravellLocator("loc.btn.gotIt"));
 
-				String actualBookingId = common.getText(driver, properties.phpTravellLocator("loc.txt.bookingNumber"));
+				String actualBookingId = utility.getText(driver, properties.phpTravellLocator("loc.txt.bookingNumber"));
 				validate.verifyContent(invoicePageUrl, actualBookingId, "book id not present");
 				log.info("validated that the bookingId matched with the url");
 
@@ -76,6 +71,7 @@ public class PhpTravelsSript extends TestBase {
 		// switch back to main window
 		log.info("switch to main window");
 		driver.switchTo().window(mainWindowHandle);
+		 ((JavascriptExecutor) driver).executeScript("window.focus();");
 
 	}
 
@@ -84,7 +80,14 @@ public class PhpTravelsSript extends TestBase {
 		log.info("select random invoice and validate");
 	
 		home.selectRandomBookingDetails(driver);
+		driver.close();
 		
 
+	
+	
+		
 	}
+	
+	
+	
 }
